@@ -10,6 +10,8 @@ find_package(SFML COMPONENTS Graphics Window System REQUIRED)
 add_executable(particle-simulator
     src/main.cpp
     src/render.cpp
+    src/vec2.cpp
+    src/particle.cpp
 )
 
 target_link_libraries(particle-simulator

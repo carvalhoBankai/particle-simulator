@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <string>
+#include "vec2.hpp"
 
 class Render {
     private:
@@ -12,7 +13,7 @@ class Render {
 
     public:
         Render(unsigned int width, unsigned int height);
-        void draw(const std::vector<sf::Vector2f>& points);
+        void draw(const std::vector<Vec2>& points);
         void clear();
         void display();
         bool isOpen();

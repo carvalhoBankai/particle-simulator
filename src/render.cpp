@@ -6,11 +6,11 @@ Render::Render(unsigned int width, unsigned int heigth) :
                                         window(sf::VideoMode({width, heigth}),"My SFML Window") {
 }
 
-void Render::draw(const std::vector<sf::Vector2f>& points) {
+void Render::draw(const std::vector<Vec2>& points) {
 
-    for(auto& point : points){
+    for(auto& point : points) {
         sf::CircleShape circle(1.0f);
-        circle.setPosition(point);
+        circle.setPosition({point.x, point.y});
         window.draw(circle);
     }
 }
