@@ -1,18 +1,34 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "render.hpp"
+#include "particle.hpp"
 #include "vec2.hpp"
+#include "point.hpp"
 #include <iostream>
 
 int main()
 {
    
-    std::vector<Vec2> points{
-        {100.f, 100.f},
-        {200.f, 200.f},
-        {300.f, 300.f},
-        {400.f, 250.f}
-    };
+    std::vector<Point> points;
+
+    std::vector<Particle> particles(10);
+    Vec2 force = {2, 2};
+    int i = 1;
+    for (auto& particle : particles)
+    {
+        particle.ApllyForce(force*i, 2);
+        i++;
+    }
+
+    for (auto& particle : particles)
+    {
+        particle.ApllyForce(force*i, 2);
+        i++;
+
+        Point p{particle.getPosition(), sf::Color::Yellow};
+
+        points.push_back(p);
+    }
 
     Vec2 v1(30, 10);
 

@@ -10,4 +10,5 @@ class Particle {
     public:
         Particle();
         void ApllyForce(Vec2 force, float dt);  
+        Vec2 getPosition();
 };
