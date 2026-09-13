@@ -9,6 +9,7 @@ class Particle {
     
     public:
         Particle();
+        Particle(Vec2 position);
         void ApllyForce(Vec2 force, float dt);  
         Vec2 getPosition();
 };
