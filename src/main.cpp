@@ -6,37 +6,28 @@
 #include "point.hpp"
 #include <iostream>
 
+
+const int WIDTH = 1200;
+const int HEIGHT = 800;
+
 int main()
 {
    
     std::vector<Point> points;
 
-    std::vector<Particle> particles(10);
-    Vec2 force = {2, 2};
-    int i = 1;
-    for (auto& particle : particles)
-    {
-        particle.ApllyForce(force*i, 2);
-        i++;
-    }
+    std::vector<Particle> particles(1);
 
     for (auto& particle : particles)
     {
-        particle.ApllyForce(force*i, 2);
-        i++;
-
-        Point p{particle.getPosition(), sf::Color::Yellow};
+        Particle part({580, 330});
+        Point p{part.getPosition(), sf::Color::Yellow};
 
         points.push_back(p);
     }
 
-    Vec2 v1(30, 10);
-
-    v1 = v1 * 3;
-
-    std::cout << "v1 : (x, y)" << "(" << v1.x << ", " << v1.y << ")" << std::endl;
-
-    Render render(800, 600);
+    sf::Transform transform;
+    transform.translate({WIDTH / 2, HEIGHT / 2});
+    Render render(WIDTH, HEIGHT, transform);
 
     while (render.isOpen())
     {
