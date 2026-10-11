@@ -12,6 +12,8 @@ add_executable(particle-simulator
     src/render.cpp
     src/vec2.cpp
     src/particle.cpp
+    src/particle_system.cpp
+    src/conversion.cpp
 )
 
 target_link_libraries(particle-simulator

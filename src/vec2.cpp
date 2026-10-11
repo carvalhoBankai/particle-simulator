@@ -40,6 +40,20 @@ Vec2& Vec2::operator+=(const Vec2& other) {
     return *this;
 }
 
-double Vec2::norm() {
+double Vec2::norm() const {
     return std::sqrt(x * x + y * y);
+}
+
+double Vec2::squaredNorm() const {
+    return x * x + y * y;
+}
+
+Vec2 Vec2::normalized() const {
+    double n = norm();
+    
+    if (n == 0) {
+        return {0.0, 0.0};
+    }
+
+    return *this / n;
 }
