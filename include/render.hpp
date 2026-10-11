@@ -9,18 +9,13 @@
 
 class Render {
     private:
-        sf::RenderWindow window;
-        int width;
-        int heigth;
-        std::optional<sf::Transform> transformation;
+        sf::RenderWindow& window;
+        sf::Transform transform;
+        const float POINT_RADIUS;
 
     public:
-        Render(unsigned int width, unsigned int height, sf::Transform transformation);
+        Render(sf::RenderWindow& window, const float POINT_RADIUS);
         void draw(const std::vector<Point>& points);
-        void clear();
-        void display();
-        bool isOpen();
-        void processEvents();
 };
 
 #endif

@@ -1,47 +1,31 @@
 #include "render.hpp"
-#include <iostream>
 
-Render::Render(unsigned int width, unsigned int heigth, sf::Transform transformation) :
-                                        width(width),
-                                        heigth(heigth),
-                                        transformation(transformation),
-                                        window(sf::VideoMode({width, heigth}),"My SFML Window") {
+Render::Render(sf::RenderWindow& window, const float POINT_RADIUS) :
+    POINT_RADIUS(POINT_RADIUS),
+    window(window)
+{
+    float W = window.getView().getSize().x / 2.f;
+    float H = window.getView().getSize().y / 2.f;
+
+    transform.translate({W, H});
 }
 
-void Render::draw(const std::vector<Point>& points) {
-    for(auto& point : points) {
-        sf::CircleShape circle(2.0f, 100);
+void Render::draw(const std::vector<Point>& points)
+{
+    for (const auto& point : points) {
+        sf::CircleShape circle(POINT_RADIUS, 100);
+
         if (point.color) {
             circle.setFillColor(point.color.value());
         }
 
-        transformation
-            ?  circle.setPosition(transformation->transformPoint({point.coordinates.x, point.coordinates.y}))
-            :  circle.setPosition({point.coordinates.x, point.coordinates.y});
+        sf::Vector2f position{
+            point.coordinates.x,
+            point.coordinates.y
+        };
+
+        circle.setPosition(transform.transformPoint(position));
+
         window.draw(circle);
-    }
-}
-
-void Render::clear(){
-    window.clear();
-}
-
-void Render::display(){
-    window.display();
-}
-
-bool Render::isOpen()
-{
-    return window.isOpen();
-}
-
-void Render::processEvents()
-{
-    while (const std::optional event = window.pollEvent())
-    {
-        if (event->is<sf::Event::Closed>())
-        {
-            window.close();
-        }
     }
 }
