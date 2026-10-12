@@ -6,7 +6,6 @@ Render::Render(sf::RenderWindow& window, const float POINT_RADIUS) :
 {
     float W = window.getView().getSize().x / 2.f;
     float H = window.getView().getSize().y / 2.f;
-
     transform.translate({W, H});
 }
 

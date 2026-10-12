@@ -17,7 +17,11 @@ class Vec2 {
         // vector / lambda
         Vec2 operator/(const float lambda) const;
 
-        double norm();
+        double norm() const;
+
+        double squaredNorm() const;
+
+        Vec2 normalized() const;
 };
 
 #endif
